@@ -1,6 +1,12 @@
 # slack-commands
 
-## QuickStart
+## Slack usage
+
+`/github <username>`
+
+if no `username` is provided it will use your slack username.
+
+## Developer quickstart
 
 1. npm install
 2. node app.js
