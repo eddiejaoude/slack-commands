@@ -15,7 +15,7 @@ app.all('/github', jsonParser, function (req, res) {
     console.log(req.params);
     console.log(req.body);
 
-    let username = req.body.user_name || req.body.text;
+    let username = req.body.text || req.body.user_name;
     console.log(`username: ${username}`);
 
     request({
