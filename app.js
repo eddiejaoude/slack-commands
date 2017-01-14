@@ -14,10 +14,9 @@ app.get('/', function (req, res) {
 app.all('/github', jsonParser, function (req, res) {
     console.log(req.params);
     console.log(req.body);
-    console.log(req.body.text);
 
     request({
-        url: 'http://api.github.com/users/eddiejaoude/events',
+        url: `http://api.github.com/users/${req.body.user_name || req.body.text}/events`,
         headers: {
             'Accept': 'application/vnd.github.v3+json',
             'User-Agent': 'SlackCmds',
