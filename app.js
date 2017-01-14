@@ -33,7 +33,7 @@ app.all('/github', jsonParser, function (req, res) {
                 "mrkdwn": true,
                 "text": data.slice(0, 3).map((item) => {
                     return `- ${item.type}: ${item.date}`;
-                })
+                }).join('\n')
             }
         );
     })
