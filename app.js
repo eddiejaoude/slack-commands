@@ -25,7 +25,7 @@ app.all('/github', jsonParser, function (req, res) {
         let data = JSON.parse(body).map((item)=>{
             return { 'type': item.type, 'date': item.created_at};
         });
-        res.json(data);
+        res.json(data.slice(0,3));
     })
 });
 
