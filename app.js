@@ -15,8 +15,11 @@ app.all('/github', jsonParser, function (req, res) {
     console.log(req.params);
     console.log(req.body);
 
+    let username = req.body.user_name || req.body.text;
+    console.log(`username: ${username}`);
+
     request({
-        url: `http://api.github.com/users/${req.body.user_name || req.body.text}/events`,
+        url: `http://api.github.com/users/${username}/events`,
         headers: {
             'Accept': 'application/vnd.github.v3+json',
             'User-Agent': 'SlackCmds',
