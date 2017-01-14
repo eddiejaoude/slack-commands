@@ -5,7 +5,7 @@ let jsonParser = bodyParser.json();
 let request = require('request');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function (req, res) {
     res.send('Slack Commands!');
@@ -25,10 +25,17 @@ app.all('/github', jsonParser, function (req, res) {
             'User-Agent': 'SlackCmds',
         }
     }, function (error, response, body) {
-        let data = JSON.parse(body).map((item)=>{
-            return { 'type': item.type, 'date': item.created_at};
+        let data = JSON.parse(body).map((item) => {
+            return {'type': item.type, 'date': item.created_at};
         });
-        res.json(data.slice(0,3));
+        res.json(
+            {
+                "mrkdwn": true,
+                "text": data.slice(0, 3).map((item) => {
+                    return `- ${item.type}: ${item.date}`;
+                })
+            }
+        );
     })
 });
 
