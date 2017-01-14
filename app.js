@@ -10,6 +10,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/github', jsonParser, function (req, res) {
+    console.log(req.body);
     res.json(req.body);
 });
 
