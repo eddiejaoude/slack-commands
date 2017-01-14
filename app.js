@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var jsonParser = bodyParser.json();
-var http = require('http');
+var request = require('request');
 
 app.use(bodyParser.json());
 
@@ -13,7 +13,20 @@ app.get('/', function (req, res) {
 app.all('/github', jsonParser, function (req, res) {
     console.log(req.params);
     console.log(req.body);
-    res.json({params: req.params, body: req.body});
+    console.log(req.body.text);
+
+    request({
+        url: 'http://api.github.com/users/eddiejaoude/events',
+        headers: {
+            'Accept': 'application/vnd.github.v3+json',
+            'User-Agent': 'SlackCmds',
+        }
+    }, function (error, response, body) {
+        let data = JSON.parse(body).map((item)=>{
+            return { 'type': item.type, 'date': item.created_at};
+        });
+        res.json(data);
+    })
 });
 
 var port = process.env.PORT || 3000;
