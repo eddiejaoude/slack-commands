@@ -28,6 +28,8 @@ app.all('/github', jsonParser, function (req, res) {
         let data = JSON.parse(body).slice(0, 3).map((item) => {
             return {
                 'title': item.type,
+                "author_name": item.actor.display_login,
+                "thumb_url": item.actor.avatar_url,
                 'ts': Date.parse(item.created_at)
             };
         });
