@@ -6,6 +6,8 @@
 
 if no `username` is provided it will use your slack username.
 
+![Screenshot](https://cloud.githubusercontent.com/assets/624760/21960883/fe0e763c-daf0-11e6-8383-6ec840fcc6f4.png)
+
 ## Developer quickstart
 
 1. npm install
