@@ -32,8 +32,7 @@ app.all('/github', jsonParser, function (req, res) {
                 "thumb_url": item.actor.avatar_url,
                 'ts': Date.parse(item.created_at),
                 "color": "#2C3E50",
-                "pretext": "Your latest activities on GitHub:",
-                "title": "GitHub activity"
+                "pretext": "Your latest activities on GitHub:"
             };
         });
         res.json(
