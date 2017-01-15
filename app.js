@@ -30,7 +30,8 @@ app.all('/github', jsonParser, function (req, res) {
                 'title': item.type,
                 "author_name": item.actor.display_login,
                 "thumb_url": item.actor.avatar_url,
-                'ts': Date.parse(item.created_at)
+                'ts': Date.parse(item.created_at),
+                "color": "#A7B99E"
             };
         });
         res.json(
