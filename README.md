@@ -32,3 +32,17 @@ POST /github
 ```json
 <body>
 ```
+
+## Deploy to Heroku
+
+### Add remote
+
+`git remote add heroku https://git.heroku.com/slackcmds.git`
+
+or 
+
+`heroku git:remote -a slackcmds`
+
+### Push branch
+
+`git push heroku prototype-v0.1:master -f`
